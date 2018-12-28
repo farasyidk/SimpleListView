@@ -3,6 +3,7 @@ package rasyidk.fa.simplelistview
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +19,12 @@ class MainActivity : AppCompatActivity() {
         //adapter bawaan android kotlin
         var bulanAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, bulanArray)
 
+        //mendefinisikan adapter ke listview layout
         listview.adapter = bulanAdapter
+
+        listview.setOnItemClickListener { parent, view, i, l ->
+            var namabulan = listview.getItemAtPosition(i).toString()
+            Toast.makeText(this, "bulan $namabulan", Toast.LENGTH_SHORT).show()
+        }
     }
 }
